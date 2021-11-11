@@ -2,12 +2,12 @@ import wx, math, threading as thread
 from time import sleep
 
 app = wx.App()
-frm = wx.Frame(None, title="Shitty Calculator", size=(300, 60))
+frm = wx.Frame(None, title="Shitty Calculator", size=(460, 60))
+frm.SetMaxSize((460, 60)); frm.SetMinSize((460, 60))
 frm.EnableFullScreenView(False)
 frm.EnableMaximizeButton(False)
-frm.SetMaxSize((300, 60))
-frm.SetMinSize((90, 60))
-label = wx.StaticText(frm, label="Answer: ")
+
+label = wx.StaticText(frm, label="Use the menu bar above to use the calculator.")
 label_font: wx.Font = label.GetFont()
 label_font.PointSize += 10
 label.SetFont(label_font)
@@ -64,7 +64,7 @@ class WxMenuBarCalculator():
     # Create a result menu
     self.result_menu = wx.Menu()
     self.calc_result: wx.MenuItem = self.result_menu.Append(wx.ID_ANY, "Calculate result")
-    self.result_label: wx.MenuItem = self.result_menu.Append(wx.ID_ANY, "Result: ", kind=wx.ITEM_NORMAL)
+    self.result_label: wx.MenuItem = self.result_menu.Append(wx.ID_ANY, "Answer: ", kind=wx.ITEM_NORMAL)
     self.result_label.Enable(False)
 
     # Create menu bar
@@ -161,7 +161,6 @@ class WxMenuBarCalculator():
   def on_calculate_result(self, event: wx.MenuEvent):
     answer_text = f"Answer: {self.answer}"
     self.result_label.SetItemLabel(answer_text)
-    label.SetLabel(answer_text)
     
 shit_calculator = WxMenuBarCalculator(frm)
 frm.Show()
