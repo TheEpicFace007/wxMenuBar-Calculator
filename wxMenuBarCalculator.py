@@ -3,6 +3,8 @@ from time import sleep
 
 app = wx.App()
 frm = wx.Frame(None, title="Shitty Calculator", size=(300, 60))
+frm.EnableFullScreenView(False)
+frm.EnableMaximizeButton(False)
 frm.SetMaxSize((300, 60))
 frm.SetMinSize((90, 60))
 label = wx.StaticText(frm, label="Answer: ")
